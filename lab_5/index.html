@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html><head>
+<title>electricity bill generation</title>
+<link rel="stylesheet" type="text/css" href="test.css">
+<script>
+    function calc(){
+        var t="";
+        var units = parseInt(document.getElementById("inp").value);
+        var bill = 0;3.5,4,5.2,6.5
+        if(units<=50){
+            bill=units*3.5;
+            t+= units+" Units at Rs3.5 per unit";
+        }else{
+            bill=50*3.5;
+            t+= "50 Units at Rs3.5 per unit gives "+(3.5*50)+".<br>";
+            units-=50;
+            if(units<=100){
+                bill+=units*4;
+                t+= units+" Units at Rs4 per unit gives "+(units*4)+".<br>";
+            }else{
+                bill+=100*4;
+                t+= "100 Units at Rs4 per unit gives "+(4*100)+".<br>";
+                units-=100;
+                if(units<=100){
+                    bill+=units*5.2;
+                    t+= units+" Units at Rs5.2 per unit "+(5.2*units)+".<br>";
+                }else{
+                    bill+=100*5.2+(units-100)*6.5;
+                    t+= "100 Units at Rs5.2 per unit gives "+(100*5.2)+".<br>";
+                    t+= (units-100)+" Units at Rs6.5 per unit gives "+(units-100)*6.5+".<br>";
+
+                }
+            }
+        }
+        let text1=document.getElementById("output");
+        t+="<h2><I>The bill is Rs :"+bill+"</I></h2>";
+        text1.innerHTML=t;
+    }
+</script>
+</head>
+<body>
+	<h1>Enter the amount of units used</h1>
+    <form method="post" >
+        <input type="number" id="inp">
+        <input type="button" value="Calculate" onclick="calc()">
+        <p id="output"></p>
+    </form>
+</body>
+</html>
