@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations Demo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Array Operations Demo</h1>
+
+        <!-- Integer Array Operations -->
+        <div class="mb-4">
+            <h2>Integer Array Operations</h2>
+            <div class="form-inline mb-3">
+                <input type="text" id="integerInput" class="form-control mr-2" placeholder="Enter integer">
+                <button class="btn btn-primary" onclick="addInteger()">Add Integer</button>
+                <button class="btn btn-success ml-2" onclick="sortIntegerArray()">Sort</button>
+                <input type="text" id="searchIntegerInput" class="form-control ml-2" placeholder="Search integer">
+                <button class="btn btn-info" onclick="searchInteger()">Search</button>
+            </div>
+            <ul id="integerArray" class="list-group"></ul>
+        </div>
+
+        <!-- Named Entities Array Operations -->
+        <div>
+            <h2>Named Entities Array</h2>
+            <div class="form-inline mb-3">
+                <input type="text" id="entityInput" class="form-control mr-2" placeholder="Enter entity">
+                <button class="btn btn-primary" onclick="addEntity()">Add Entity</button>
+            </div>
+            <ul id="entityArray" class="list-group"></ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Integer Array Operations
+        const integerArray = [];
+
+        function addInteger() {
+            const inputValue = $('#integerInput').val();
+            if (inputValue && !isNaN(inputValue)) {
+                integerArray.push(parseInt(inputValue));
+                displayIntegerArray();
+                $('#integerInput').val('');
+            }
+        }
+
+        function sortIntegerArray() {
+            integerArray.sort((a, b) => a - b);
+            displayIntegerArray();
+        }
+
+        function searchInteger() {
+            const searchValue = parseInt($('#searchIntegerInput').val());
+            const foundIndex = integerArray.indexOf(searchValue);
+
+            if (foundIndex !== -1) {
+                alert(`${searchValue} found at index ${foundIndex}`);
+            } else {
+                alert(`${searchValue} not found in the array`);
+            }
+        }
+
+        function displayIntegerArray() {
+            const integerList = $('#integerArray');
+            integerList.empty();
+            integerArray.forEach(value => {
+                integerList.append(`<li class="list-group-item">${value}</li>`);
+            });
+        }
+
+        // Named Entities Array Operations
+        const entityArray = [];
+
+        function addEntity() {
+            const entityValue = $('#entityInput').val();
+            if (entityValue) {
+                entityArray.push(entityValue);
+                displayEntityArray();
+                $('#entityInput').val('');
+            }
+        }
+
+        function displayEntityArray() {
+            const entityList = $('#entityArray');
+            entityList.empty();
+            entityArray.forEach(value => {
+                entityList.append(`<li class="list-group-item">${value}</li>`);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Form</title>
+</head>
+<body>
+    <h2>Sample Form</h2>
+    <div>
+      <form action="index.php" method="post">
+          <label for="name">Name: </label>
+          <input type="text" name="name" required><br>
+
+          <label for="email">Email:</label>
+          <input type="text" name="email" required><br>
+
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+    <!--<?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $name = $_POST["name"];
+          $email = $_POST["email"];
+
+          $formData = array(
+              'name' => $name,
+              'email' => $email
+          );
+
+          echo "<h2>Form Data:</h2>";
+          echo "<p>Name: $formData[name]</p>";
+          echo "<p>Email: $formData[email]</p>";
+      }
+      ?>-->
+
+</body>
+</html>
